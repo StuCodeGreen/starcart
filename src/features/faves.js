@@ -15,7 +15,8 @@ export const favesSlice = createSlice({
 		addFave: (state, action) => {
 			const name = action.payload.name ? action.payload.name : action.payload.title ? action.payload.title : 'no name'
 			const fave = createFave(action.payload, name)
-			state.push(fave)
+      const checkForDuplicate = state.find(fave => fave.name === name);
+			return checkForDuplicate ? state : [...state, fave ];
 		},
 		updateFave: (state, action) => {
 			// find fave
