@@ -4,9 +4,12 @@ import { nanoid } from '@reduxjs/toolkit'
 import { useDispatch } from 'react-redux'
 import { addFave } from '../features/faves'
 import CharacterDetails from './CharacterDetails'
+import usePagination from '../hooks/pagination'
 
 const Characters = () => {
-	const { data, isError, isLoading } = useGetCharactersQuery("1")
+  const {activePage, setActivePage} = usePagination()
+	const { data, isError, isLoading } = useGetCharactersQuery(activePage)
+
 	const dispatch = useDispatch();
 	const selectCharacter = e => {
 		const { name } = e.currentTarget.dataset
@@ -45,7 +48,7 @@ console.log(data)
 					</Card>
 				))}
 			</Card.Group>
-      <Pagination defaultActivePage={5} totalPages={data.count} onPageChange={(event, data) => console.log(data.activePage)}/>
+      <Pagination defaultActivePage={5} totalPages={9} onPageChange={(event, data) => setActivePage(data.activePage)}/>
       </div>
 		)
 	} else if (data?.results?.length === 0) {
