@@ -29,13 +29,10 @@ export const favesSlice = createSlice({
 			// return state
 		},
 		removeFave: (state, action) => {
-			// const id = action.payload
+      const id = action.payload
 			console.log('faves', current(state))
-			/*
-			 ! remove fave code here */
-			/*
-			 * make sure to return the whole state because it's just a single array of faves */
-			// return state.???
+      const arr = state.filter(fave => fave.id !== id)
+			return state = arr;
 		},
 	},
 })
