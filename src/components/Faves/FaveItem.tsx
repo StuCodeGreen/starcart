@@ -1,10 +1,10 @@
-import { SyntheticEvent } from 'react';
-import { Button, List, Rating, RatingProps } from 'semantic-ui-react'
+import { Button, List, Rating } from 'semantic-ui-react'
+import {handleRating, handleRemove, FaveItemObj} from './types'
 
 interface Props {
-	fave: { name: string; rating: number }
-	handleRating: (_e:SyntheticEvent, data:RatingProps) => void;
-	handleRemove: () => void;
+	fave: FaveItemObj;
+	handleRating: handleRating;
+	handleRemove:handleRemove;
 }
 
 const FaveItem = ({ fave, handleRating, handleRemove }: Props) => (
