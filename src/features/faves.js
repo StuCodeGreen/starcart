@@ -31,7 +31,7 @@ export const favesSlice = createSlice({
 		},
 		removeFave: (state, action) => {
       const id = action.payload
-			console.log('faves', current(state))
+			// console.log('faves', current(state))
       const arr = state.filter(fave => fave.id !== id)
 			return state = arr;
 		},
